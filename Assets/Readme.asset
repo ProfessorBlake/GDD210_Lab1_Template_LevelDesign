@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 727a75301c3d24613a3ebcec4a24c2c8, type: 3}
+  title: GDD210 Lab 1 Level Design Template
+  sections:
+  - heading: How To Use This Template
+    text: This template provides a complete game for which you can build levels. You should use the example level to learn the game mechanics and
+    understand the gameplay loop, then utilize ProBuilder or other tools to make a level for the game. Identify Points of Interest and be 
+    prepared to explain why you designed the level the way you did.
+    linkText: 
+    url:
+  - heading: Project Organization
+    text: All assets related to the game should be added to the appropriate directory inside the "Game" folder.
+  - heading: Resources
+    text:
+    linkText: Course Website
+    url: https://mywebspace.quinnipiac.edu/cblake/210
+  - heading: Asset Attribution
+    text: 
+    linkText: Skybox - AmbientCG.com
+    url: https://ambientcg.com/
+  loadedLayout: 1
