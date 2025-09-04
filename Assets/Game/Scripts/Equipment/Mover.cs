@@ -9,6 +9,8 @@ namespace Game
     {
         [Tooltip("Distance and direction to move")]
 		[SerializeField] private Vector3 moveVector;
+        [Tooltip("Axis to rotate on. Length of vector controls rotation angle. 0,0,0 will not rotate.")]
+        [SerializeField] private Vector3 rotationVector;
         [Tooltip("Move speed")]
 		[SerializeField] private float speed;
         [Tooltip("Time before move should head back to start position once triggered")]
@@ -20,10 +22,13 @@ namespace Game
 		private Vector3 startPos;
         private float resetDelay;
         private Vector3 vel;
+        private Vector3 startRotation;
+        private float startTime;
 
 		private void Start()
 		{
 			startPos = transform.position;
+            startRotation = transform.eulerAngles;
 		}
 
 		private void Update()
@@ -37,6 +42,8 @@ namespace Game
 						resetDelay = Time.time + resetTime;
 				}
                 transform.position = Vector3.SmoothDamp(transform.position,startPos + moveVector, ref vel, speed * Time.deltaTime, speed);
+                if(!Mathf.Approximately(rotationVector.sqrMagnitude, 0f))
+                    transform.eulerAngles = Vector3.Lerp(startRotation, rotationVector, Mathf.Sin(Time.time - startTime)/2 + 0.5f);
             }
             else
             {
@@ -53,6 +60,7 @@ namespace Game
         public void Trigger()
         {
             isTriggered = true;
+            startTime = Time.time*2*0.5f;
             if(resetTime >= 0)
                 resetDelay = Time.time + resetTime;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game
@@ -33,6 +34,7 @@ namespace Game
 
 		[Header("UI")]
 		[SerializeField] private Image damageFlashImage;
+		[SerializeField] private Timer timer;
 
 		private float camOffset;
 		private float camRotation = 0f;
@@ -153,6 +155,7 @@ namespace Game
 			transform.position = startPosition; 
 			transform.rotation = startRotation;
 			damageFlashImage.color = new Color(0.8f, 0f, 0f, 0.5f);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 
 		private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -162,6 +165,12 @@ namespace Game
 			{
 				button.Press();
 			}
-		}
+
+			Goal goal = hit.collider.GetComponent<Goal>();
+			if (goal)
+			{
+				timer.Stop();
+			}
+		}	
 	}
 }
